@@ -12,8 +12,6 @@ let animFirst = anime({
 
 
 //For top blue triangle
-
-
   let animSecond = anime({
     targets: '.triangle',
     rotate: 45,
@@ -22,29 +20,6 @@ let animFirst = anime({
   })
   let secondClick = document.getElementById('secondClick')
   secondClick.onclick = animSecond.play
-
-//For small yellow shapes
- let animThird = anime({
-  targets: '#thirdClick',
-  translateX: function(el) {
-    return el.getAttribute('data-x');
-  },
-  translateY: function(el, i) {
-    return 50 + (-50 * i);
-  },
-  scale: function(el, i, l) {
-    return (l - i) + .25;
-  },
-  rotate: function() { return anime.random(-360, 360); },
-  duration: function() { return anime.random(1200, 1800); },
-  delay: function() { return anime.random(0, 400); },
-  direction: 'alternate',
-  loop: true,
-  autoplay: false
-});
-let thirdClick = document.getElementById('thirdClick')
-thirdClick.onclick = animThird.play
-
 
 /*
 let prevRotate = 0
@@ -69,8 +44,6 @@ let prevRotate = 0
   let secondClick = document.getElementById('secondClick')
   secondClick.onclick = animSecond
   */
-
-
   //for red rec__red
   let animFourth = anime({
   targets: '.rec__red',
@@ -82,3 +55,15 @@ let prevRotate = 0
 });
 let fourthClick = document.getElementById('fourthClick')
 fourthClick.onclick = animFourth.play
+
+
+//for small blue triangle 
+let animThird = anime({
+  targets: '.triangle__small',
+  rotate: ['86.74deg',  360],
+  duration: 1500,
+  direction: 'alternate',
+  autoplay: false
+})
+let thirdClick = document.getElementById('thirdClick')
+thirdClick.onclick = animThird.play
