@@ -72,7 +72,7 @@ div {
     height: 70px;
     top: 6%;
     right: 13%;
-    
+
 }
 .triangle__small {
     width: 0;
@@ -83,7 +83,7 @@ div {
     border-right: 65px solid transparent;
     border-bottom: 105px solid #0034EB;
     border-left: 65px solid transparent;
-    transform: rotate(86.74deg);   
+    transform: rotate(86.74deg);
 }
 .rec__red {
     bottom: 26%;
@@ -98,7 +98,7 @@ div {
     width: 400px;
     height: 5px;
     background-color: #000000;
-    transform: rotate(-30deg); 
+    transform: rotate(-30deg);
 }
 .line__down {
     bottom: 18%;
@@ -132,4 +132,11 @@ div {
     height: 175px;
     border-radius: 50%;
     background-color: #000000;
+}
+
+.yellow__square {
+  background-color: #FFE600;
+  height: 30px;
+  width: 30px;
+  
 }
