@@ -103,7 +103,19 @@ eigthtClick.onclick = eightAnim.play
 //Подключаю библиотеку прокрутки
 let controller = new ScrollMagic.Controller()
 
-let square = document.querySelector('.yellow__square__one')
-let squareOneAnim = anime({
-  targets: square
+let squareOne = document.querySelectorAll('.yellow__square__one')
+let squareOneAnim = anime.timeline({
+
+})
+
+
+let mainSecondOne = document.querySelector('.main__sec')
+new ScrollMagic.Scene({
+  triggerElement: mainSecondOne,
+  duration: mainSecondOne.getBoundingClientRect().height/2
+})
+.addTo(controller)
+.setPin(squareOne)
+.on('progress', e => {
+  squareOneAnim.seek(squareOneAnim.duration * e.progress)
 })
