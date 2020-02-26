@@ -103,19 +103,111 @@ eigthtClick.onclick = eightAnim.play
 //Подключаю библиотеку прокрутки
 let controller = new ScrollMagic.Controller()
 
-let squareOne = document.querySelectorAll('.yellow__square__one')
-let squareOneAnim = anime.timeline({
 
+//поворот для первого квадрата
+let squareOne = document.querySelector('.yellow__square__one') 
+let squareOneAnim = anime({
+  targets: squareOne,
+  translateY: 200,
+  rotate: '+= 2turn',
+  easing: 'linear',
+  autoplay: false
 })
 
-
-let mainSecondOne = document.querySelector('.main__sec')
+//Акцивация анимации при скролле для первого квадрата
+let mainSecond = document.querySelector('.main__sec')
 new ScrollMagic.Scene({
-  triggerElement: mainSecondOne,
-  duration: mainSecondOne.getBoundingClientRect().height/2
+  triggerElement: mainSecond,
+  duration: mainSecond.getBoundingClientRect().height
 })
 .addTo(controller)
 .setPin(squareOne)
 .on('progress', e => {
-  squareOneAnim.seek(squareOneAnim.duration * e.progress)
+  squareOneAnim.seek(squareOneAnim.duration * e.progress) 
 })
+
+
+//поворот для второго квадрата
+let squareSec = document.querySelector('.yellow__square__sec') 
+let squareSecAnim = anime({
+  targets: squareSec,
+  translateY: 150,
+  scale: 5,
+  rotate: '+= 2turn',
+  easing: 'linear',
+  autoplay: false
+})
+
+//Акцивация анимации при скролле для первого квадрата
+new ScrollMagic.Scene({
+  triggerElement: mainSecond,
+  duration: mainSecond.getBoundingClientRect().height
+})
+.addTo(controller)
+.setPin(squareSec)
+.on('progress', e => {
+  squareSecAnim.seek(squareSecAnim.duration * e.progress) 
+})
+
+
+//поворот для третьего квадрата
+let squareTh = document.querySelector('.yellow__square__th') 
+let squareThAnim = anime({
+  targets: squareTh,
+  translateY: 50,
+  rotate: '+= 2turn',
+  easing: 'linear',
+  autoplay: false
+})
+
+//Акцивация анимации при скролле для первого квадрата
+new ScrollMagic.Scene({
+  triggerElement: mainSecond,
+  duration: mainSecond.getBoundingClientRect().height
+})
+.addTo(controller)
+.setPin(squareTh)
+.on('progress', e => {
+  squareThAnim.seek(squareThAnim.duration * e.progress) 
+})
+
+//для "свайпа" экранов
+/*
+let wipeAnimation = new TimelineMax();
+wipeAnimation.fromTo("section.main__section__blue", 1, {x: "-100%"}, {x: "0%", ease: Linear.easeNone})  // in from left
+wipeAnimation.fromTo("section.main__section__red",    1, {x:  "100%"}, {x: "0%", ease: Linear.easeNone})  // in from right
+wipeAnimation.fromTo("section.main__section__white", 1, {y: "-100%"}, {y: "0%", ease: Linear.easeNone}); // in from top
+
+new ScrollMagic.Scene({
+  triggerElement: "#pinContainer",
+  triggerHook: "onLeave",
+  duration: "300%"
+})
+.setPin('.main__section')
+.setTween(wipeAnimation)
+.addIndicators({
+  colorTrigger: 'white',
+  colorStart: 'white',
+  colorEnd: 'white',
+  indent: 'unpin'
+}
+)
+.addTo(controller);
+*/
+
+//для увелич.черного квадрата
+let squareBlack = document.querySelector('.main__third')
+let squareBlackAnim = anime({
+  targets: squareBlack,
+  scale: 7.5,
+  duration: 1500,
+  easing: 'linear',
+  autoplay: false
+})
+
+new ScrollMagic.Scene({
+  triggerElement: squareBlack,
+  triggerHook: 1
+})
+.addTo(controller)
+.on('enter', () => squareBlackAnim.play())
