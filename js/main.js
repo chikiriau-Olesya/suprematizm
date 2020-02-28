@@ -108,7 +108,7 @@ let controller = new ScrollMagic.Controller()
 let squareOne = document.querySelector('.yellow__square__one') 
 let squareOneAnim = anime({
   targets: squareOne,
-  translateY: 200,
+  translateY: 150,
   rotate: '+= 2turn',
   easing: 'linear',
   autoplay: false
@@ -131,8 +131,8 @@ new ScrollMagic.Scene({
 let squareSec = document.querySelector('.yellow__square__sec') 
 let squareSecAnim = anime({
   targets: squareSec,
-  translateY: 150,
-  scale: 5,
+  translateY: 100,
+  scale: 4,
   rotate: '+= 2turn',
   easing: 'linear',
   autoplay: false
@@ -154,7 +154,7 @@ new ScrollMagic.Scene({
 let squareTh = document.querySelector('.yellow__square__th') 
 let squareThAnim = anime({
   targets: squareTh,
-  translateY: 50,
+  translateY: 0,
   rotate: '+= 2turn',
   easing: 'linear',
   autoplay: false
@@ -195,19 +195,88 @@ new ScrollMagic.Scene({
 .addTo(controller);
 */
 
+
 //для увелич.черного квадрата
 let squareBlack = document.querySelector('.main__third')
-let squareBlackAnim = anime({
+let squareAndCircAnim = anime.timeline({
+  easing: 'linear',
+  delay: 500,
+})
+squareAndCircAnim 
+.add ({
   targets: squareBlack,
-  scale: 7.5,
-  duration: 1500,
+  scale: 6.7,
+  duration: 3000,
   easing: 'linear',
   autoplay: false
 })
-
+.add ({
+  targets: '.circle__white__first',
+  translateY: 3,
+  translateX: '-5',
+  scale: 0.5,
+  opacity: [0, 1],
+  duration: 300,
+  easing: 'linear',
+  autoplay: false
+})
+.add ({
+  targets: '.circle__white__second',
+  translateY: 78,
+  translateX: '-3',
+  scale: 1,
+  opacity: [0, 1],
+  duration: 400,
+  easing: 'linear',
+  autoplay: false
+})
+.add ({
+  targets: '.circle__white__third',
+  translateY: 228,
+  translateX: 2,
+  scale: 2,
+  opacity: [0, 1],
+  duration: 500,
+  easing: 'linear',
+  autoplay: false
+})
+.add ({
+  targets: '.circle__white__fourth',
+  translateY: 478,
+  translateX: 1,
+  scale: 3,
+  opacity: [0, 1],
+  duration: 500,
+  easing: 'linear',
+  autoplay: false
+})
+.add ({
+  targets: '.circle__white__fifth',
+  translateY: 828,
+  translateX: 1,
+  scale: 4,
+  opacity: [0, 1],
+  duration: 500,
+  easing: 'linear',
+  autoplay: false
+})
 new ScrollMagic.Scene({
   triggerElement: squareBlack,
   triggerHook: 1
 })
 .addTo(controller)
-.on('enter', () => squareBlackAnim.play())
+.on('enter', () =>  squareAndCircAnim.play())
+
+let circleToSquare = anime({
+  targets: '.circle__white',
+  easing: 'linear',
+  translateY: 840,
+  scale: 5,
+  backgroundColor: '#0034EB',
+  borderRadius: ['50%', 0],
+  easing: 'linear',
+  rotate: 45,
+  autoplay: false
+})
+let makeSquare = document.getElementById('makeSquare')
+makeSquare.onclick =  circleToSquare.play
